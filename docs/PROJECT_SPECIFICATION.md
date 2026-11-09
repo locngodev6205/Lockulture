@@ -1,12 +1,12 @@
 # ĐẶC TẢ YÊU CẦU & NGHIỆP VỤ HỆ THỐNG
 
-## LOCKULTURE (TIME TRAVELER’S LOCKET) – KHÁM PHÁ LỊCH SỬ & VĂN HÓA QUA LĂNG KÍNH THỰC TẾ
-### ĐỊA BÀN TRỌNG TÂM: THÀNH PHỐ ĐÀ NẴNG (PILOT CITY)
+## LOCKULTURE (TIME TRAVELER’S LOCKET) – KHÁM PHÁ LỊCH SỬ & VĂN HÓA VIỆT NAM QUA LĂNG KÍNH THỰC TẾ
+### ĐỊNH HƯỚNG SẢN PHẨM: TOÀN DIỆN LỊCH SỬ VIỆT NAM — ĐỊA BÀN THÍ ĐIỂM HACKATHON: THÀNH PHỐ ĐÀ NẴNG (PILOT CITY)
 
 - **Mã dự án:** LOCKULTURE-GDG2026.
-- **Phiên bản đặc tả:** 2.1 — ngày 09/11/2026.
+- **Phiên bản đặc tả:** 2.2 — ngày 09/11/2026.
 - **Chủ đề cuộc thi:** Mini Hackathon GDG 2026 – DevFest *"Learn Beyond Limits"*.
-- **Trạng thái:** Đặc tả nghiệp vụ chuẩn hóa phục vụ triển khai MVP trong kỳ thi Hackathon và định hướng mở rộng sản phẩm. Hệ thống áp dụng triết lý thiết kế **"Không gian dẫn lối – Thời gian ghi nhận" (Location-First, Timeline-Organized)** kết hợp kiến trúc **Multi-Agent trên Google Cloud Run & Gemini API** và **Đồng bộ thời gian thực qua Firebase**.
+- **Tầm nhìn sản phẩm (Product Vision):** Xây dựng nền tảng số hóa di sản & khám phá **toàn bộ các thời kỳ lịch sử - văn hóa Việt Nam** dành cho giới trẻ cả nước. Trong khuôn khổ kỳ thi Mini Hackathon GDG 2026, nhóm tập trung làm **hoàn thiện 100% dữ liệu trải nghiệm tại Thành phố Đà Nẵng** làm địa bàn mẫu (Showcase/Pilot City) để chứng minh tính khả thi trước khi nhân rộng ra toàn quốc (Hà Nội, Huế, TP.HCM...).
 
 ---
 
@@ -17,20 +17,27 @@
 Xây dựng ứng dụng di động kết hợp cơ chế chia sẻ ảnh tức thời kiểu Locket/BeReal với yếu tố trò chơi hóa (Gamification) và hệ sinh thái đa tác tử (Multi-Agent System). Ứng dụng biến việc tìm hiểu lịch sử, văn hóa từ những bài học lý thuyết khô khan thành hành trình khám phá, săn lùng di tích thực tế ngoài đời sống dành cho giới trẻ (Gen Z).
 
 Các mục tiêu nghiệp vụ chính:
-1. **Dòng thời gian & Bộ sưu tập Album Pokedex (Địa bàn Đà Nẵng):** Cung cấp bộ sưu tập các mốc lịch sử/văn hóa đa dạng của Đà Nẵng (từ Cổ đại Chăm Pa, Triều Nguyễn chống Pháp, Thời Cận đại Pháp thuộc đến Đổi mới - Cầu Rồng). Cho phép mở khóa phi tuyến tính: người dùng ở bất kỳ đâu đều có thể khám phá di tích xung quanh mình để lấp đầy album.
-2. **Quản trò dẫn đường & Mật thư AI (Agent 1):** Tự động định vị GPS, quét di tích quanh người dùng qua Google Maps Places API và dùng Gemini API sáng tác mật thư, câu đố dẫn đường phong cách cổ xưa (hỗ trợ nhiều nấc gợi ý giảm độ khó).
-3. **Giám định thị giác máy tính & Chống gian lận 3 lớp (Agent 2):** Xác thực ảnh chụp thực tế bằng Gemini Multimodal Vision kết hợp 3 lớp bảo vệ: Bắt buộc Live Camera + Bán kính GPS quanh di tích Đà Nẵng + Phân tích vân màn hình/viền thiết bị (Anti-spoofing), xuất kết quả chuẩn hóa JSON.
-4. **Chia sẻ tức thời & Persona Kể chuyện (Agent 3):** Tự động hóa tạo caption Gen Z bắt trend kèm sự thật lịch sử (fun fact) và phân vai nhân vật lịch sử Đà Nẵng tương tác bình luận đầu tiên dưới ảnh; đồng thời hỗ trợ chế độ cho phép người dùng tùy chỉnh/tự viết cảm nghĩ cá nhân trước khi bắn lên Feed bạn bè.
-5. **Đồng bộ Thời Gian Thực (Firebase Realtime):** Sử dụng Firebase Firestore & Cloud Storage để đồng bộ ảnh và bài đăng tức thời giữa các thành viên trong nhóm bạn.
-6. **Thích ứng nhiệm vụ địa phương & Co-op (Agent 4):** Điều chỉnh linh hoạt yêu cầu mở khóa (chụp công trình ➔ chụp hiện vật bảo tàng/hoa văn truyền thống) hoặc hỗ trợ mở khóa chéo giữa bạn bè ở các khu vực khác nhau.
+1. **Dòng thời gian Lịch Sử Toàn Diện Việt Nam (National Timeline Album):** Cung cấp trục thời gian bao quát toàn bộ 6 kỷ nguyên lịch sử hào hùng của dân tộc Việt Nam (Cổ đại Dựng nước, Thời kỳ Độc lập Phong kiến Lý - Trần - Lê, Triều Nguyễn, Cận đại Pháp thuộc, Kháng chiến Giải phóng và Đổi mới Phát triển). Hệ thống thiết kế theo cơ chế **mở khóa phi tuyến tính**: Người dùng ở bất kỳ tỉnh thành nào trên cả nước đều có thể săn lùng các di tích, hiện vật tại địa phương mình để lấp đầy bức tranh lịch sử chung của đất nước.
+2. **Khu vực Thí điểm Hoàn thiện (Showcase Pilot):** Để chứng minh tính khả thi cao nhất trong thời gian thi Hackathon, hệ thống tập trung hoàn thiện 100% bộ dữ liệu, thuật toán và kịch bản trải nghiệm tại **Thành phố Đà Nẵng** (như một mô hình "Việt Nam thu nhỏ" sở hữu đầy đủ dấu ấn qua các thời kỳ).
+3. **Quản trò dẫn đường & Mật thư AI (Agent 1):** Tự động định vị GPS, quét di tích quanh người dùng qua Google Maps Places API và dùng Gemini API sáng tác mật thư, câu đố dẫn đường phong cách cổ xưa (hỗ trợ nhiều nấc gợi ý giảm độ khó).
+4. **Giám định thị giác máy tính & Chống gian lận 3 lớp (Agent 2):** Xác thực ảnh chụp thực tế bằng Gemini Multimodal Vision kết hợp 3 lớp bảo vệ: Bắt buộc Live Camera + Bán kính GPS quanh di tích + Phân tích vân màn hình/viền thiết bị (Anti-spoofing), xuất kết quả chuẩn hóa JSON.
+5. **Chia sẻ tức thời & Persona Kể chuyện (Agent 3):** Tự động hóa tạo caption Gen Z bắt trend kèm sự thật lịch sử (fun fact) và phân vai nhân vật lịch sử tương tác bình luận đầu tiên dưới ảnh; đồng thời hỗ trợ chế độ cho phép người dùng tùy chỉnh/tự viết cảm nghĩ cá nhân trước khi bắn lên Feed bạn bè.
+6. **Đồng bộ Thời Gian Thực (Firebase Realtime):** Sử dụng Firebase Firestore & Cloud Storage để đồng bộ ảnh và bài đăng tức thời giữa các thành viên trong nhóm bạn.
+7. **Thích ứng nhiệm vụ địa phương & Co-op (Agent 4):** Điều chỉnh linh hoạt yêu cầu mở khóa (chụp công trình ➔ chụp hiện vật bảo tàng/hoa văn truyền thống) hoặc hỗ trợ mở khóa chéo giữa bạn bè ở các tỉnh thành khác nhau trên cả nước.
 
-### 1.2. Bối cảnh sử dụng & Địa bàn trọng tâm
+### 1.2. Bối cảnh sử dụng & Chiến lược Triển khai
 
-- **Thành phố trọng tâm (Pilot City):** **Thành phố Đà Nẵng** – vùng đất giao thoa văn hóa Chăm Pa cổ đại, phòng tuyến kháng chiến triều Nguyễn (Thành Điện Hải), dấu ấn đô thị cận đại và biểu tượng đổi mới năng động (Cầu Rồng, Cầu Sông Hàn).
-- **Điểm nhấn kịch bản Demo (The Golden Path):** Trọng tâm vào **Cầu Rồng (Biểu tượng thời kỳ Đổi Mới)**:
+- **Phạm vi Quốc gia (National Vision):** Nền tảng được thiết kế cấu trúc mở để bao phủ di tích của 63 tỉnh thành Việt Nam (Hà Nội, Huế, TP.HCM, Ninh Bình, Cần Thơ...).
+- **Địa bàn Thí điểm Hackathon (Pilot Showcase):** **Thành phố Đà Nẵng** được chọn làm hạt nhân trình diễn vì hội tụ đầy đủ các lớp trầm tích lịch sử đại diện cho các thời kỳ Việt Nam:
+  - Dấu ấn Cổ đại / Chăm Pa (Bảo tàng Điêu khắc Chăm).
+  - Tiền tuyến kháng chiến Triều Nguyễn (Thành Điện Hải, Hải Vân Quan).
+  - Đô thị Cận đại thời Pháp thuộc (Nhà thờ Con Gà, Chợ Hàn).
+  - Căn cứ cách mạng Kháng chiến (Bảo tàng Quân Khu 5, K20).
+  - Đô thị Đổi Mới hiện đại vươn tầm quốc tế (Cầu Rồng, Cầu Sông Hàn).
+- **Điểm nhấn kịch bản Demo (The Golden Path):** Trọng tâm vào **Cầu Rồng (Biểu tượng thời kỳ Đổi Mới của Việt Nam tại Đà Nẵng)**:
   - *Màn 1:* Mở khóa thành công Cầu Rồng + Nổ pháo hoa + Thần Rồng Sông Hàn bình luận.
   - *Màn 2:* Cố tình chụp lại ảnh Cầu Rồng qua màn hình điện thoại khác để biểu diễn tính năng Anti-Spoofing từ chối gian lận.
-- **Đối tượng người dùng chính:** Giới trẻ, học sinh, sinh viên, nhóm bạn thân yêu thích chụp ảnh check-in (Locket lover), du khách đến Đà Nẵng.
+- **Đối tượng người dùng chính:** Giới trẻ, học sinh, sinh viên, nhóm bạn thân yêu thích chụp ảnh check-in (Locket lover), du khách nội địa và quốc tế.
 - **Quy mô đội thi Hackathon:** Nhóm 3 thành viên (Mobile Lead – AI/Backend Lead – Product/Pitch Lead).
 
 ### 1.3. Phân định phạm vi
@@ -91,13 +98,13 @@ Hệ thống xây dựng sẵn danh mục di tích phong phú đại diện cho 
 
 ---
 
-### 4.1. Album Pokedex Lịch Sử Đà Nẵng (Non-linear Timeline Album)
+### 4.1. Album Pokedex Lịch Sử Toàn Diện Việt Nam (National Timeline Album)
 
 | Mã | Tên yêu cầu | Mô tả chi tiết |
 | :--- | :--- | :--- |
-| **ALB-01** | Hiển thị Album Đà Nẵng | Màn hình chính hiển thị các ô thời kỳ lịch sử của Đà Nẵng. Ô chưa mở có icon ổ khóa và nền mờ; ô đã mở sáng đèn rực rỡ kèm ảnh chụp thực tế của nhóm. |
-| **ALB-02** | Mở khóa Phi tuyến tính | Người chơi đến Cầu Rồng có thể mở khóa ngay mốc Hiện Đại mà không bắt buộc phải mở mốc Cổ đại Chăm Pa trước. |
-| **ALB-03** | Thanh tiến độ nhóm | Hiển thị % hoàn thành Album Đà Nẵng của nhóm và danh hiệu thám hiểm (ví dụ: *Tập sự ➔ Nhà Khảo Cổ Sông Hàn ➔ Bậc Thầy Di Sản Đà Nẵng*). |
+| **ALB-01** | Hiển thị Album Lịch Sử Toàn Quốc | Màn hình chính hiển thị trục 6 kỷ nguyên lịch sử hào hùng của dân tộc Việt Nam. Tại mỗi kỷ nguyên, hệ thống hiển thị danh mục các di tích, hiện vật tương ứng theo vị trí của người dùng (với dữ liệu được hoàn thiện sâu sắc nhất tại địa bàn thí điểm Đà Nẵng). |
+| **ALB-02** | Mở khóa Phi tuyến tính | Người chơi đến Cầu Rồng (Đà Nẵng) có thể mở khóa ngay mốc Hiện Đại của Lịch Sử Việt Nam mà không bắt buộc phải mở mốc Cổ đại trước. |
+| **ALB-03** | Thanh tiến độ nhóm | Hiển thị % hoàn thành Dòng Thời Gian Lịch Sử Việt Nam của nhóm và các danh hiệu thám hiểm (ví dụ: *Tập sự ➔ Nhà Khảo Cổ Sông Hàn ➔ Bậc Thầy Di Sản Việt Nam*). |
 
 ---
 

@@ -36,24 +36,25 @@
 ┌─────────────────────────────────────────────────────────────┐
 │                    ĐIỀU HƯỚNG CHÍNH (3 TABS)                │
 │                                                             │
-│   [ 📜 Album Đà Nẵng ]   [ 📸 Camera Săn Tìm ]   [ 👥 Feed Bạn Bè ]  │
+│  [ 📜 Album Sử Việt ]    [ 📸 Camera Săn Tìm ]   [ 👥 Feed Bạn Bè ]  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### 2.1. Màn hình 1: Album Pokedex Dòng Thời Gian Đà Nẵng
-* **Mục tiêu:** Cho phép người dùng theo dõi tiến trình mở khóa các thời kỳ lịch sử của Đà Nẵng theo cơ chế phi tuyến tính.
+### 2.1. Màn hình 1: Album Pokedex Dòng Thời Gian Lịch Sử Việt Nam (Showcase Đà Nẵng)
+* **Mục tiêu:** Cho phép người dùng theo dõi tiến trình mở khóa toàn bộ các thời kỳ lịch sử của Việt Nam (với dữ liệu địa phương hóa sâu sắc tại Đà Nẵng khi thi Hackathon).
 * **Bố cục:**
   - *Phần đầu (Header):* 
-    - Thanh tiến độ: `Đã giải mã: 4/12 Di tích (33%)`.
+    - Bộ lọc/Nhãn khu vực: `📍 Khu vực: Đà Nẵng (Đang kích hoạt)`.
+    - Thanh tiến độ: `Đã mở khóa: 4/6 Kỷ nguyên Lịch Sử (66%)`.
     - Danh hiệu hiện tại: `Lữ Khách Sông Hàn ⭐⭐⭐`.
     - Nút `[ 🧭 Bản đồ / Danh sách ]`: Chuyển đổi giữa chế độ xem Thẻ bài và Bản đồ kho báu.
     - Nút `[ ⚙️ Mock Mode ]`: Nút bí mật mở menu chọn vị trí giả lập cho giám khảo.
   - *Phần thân (Body):*
-    - Danh sách cuộn dọc các thẻ bài thời kỳ (Card Grid/List):
-      - **Thẻ Đang Khóa (Locked Card):** Nền tối, icon ổ khóa vàng, nhãn mờ `? - Chưa khám phá`. Bấm vào sẽ mở **Modal Mật Thư (Agent 1)**.
-      - **Thẻ Đã Mở Khóa (Unlocked Card):** Viền sáng màu vàng hoàng kim, hiển thị bức ảnh đẹp nhất do nhóm chụp, tên di tích (ví dụ: *Cầu Rồng Đà Nẵng*), huy hiệu và điểm thưởng.
+    - Danh sách cuộn dọc 6 Kỷ nguyên lớn của Lịch Sử Việt Nam:
+      - **Thẻ Đang Khóa (Locked Card):** Nền tối, icon ổ khóa vàng, nhãn mờ `? - Chưa khám phá`. Bấm vào sẽ mở **Modal Mật Thư (Agent 1)** hướng dẫn di tích quanh vị trí người dùng.
+      - **Thẻ Đã Mở Khóa (Unlocked Card):** Viền sáng màu vàng hoàng kim, hiển thị bức ảnh đẹp nhất do nhóm chụp, tên di tích (ví dụ: *Cầu Rồng Đà Nẵng*), huy hiệu thời kỳ và điểm thưởng XP.
 
 ---
 

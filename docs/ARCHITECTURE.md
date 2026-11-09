@@ -1,8 +1,8 @@
 # KIẾN TRÚC HỆ THỐNG LOCKULTURE (TIME TRAVELER’S LOCKET)
-### ĐỊA BÀN TRIỂN KHAI THỬ NGHIỆM: THÀNH PHỐ ĐÀ NẴNG
+### NỀN TẢNG KHÁM PHÁ LỊCH SỬ VIỆT NAM — ĐỊA BÀN THÍ ĐIỂM SHOWCASE: THÀNH PHỐ ĐÀ NẴNG
 
 - **Mã dự án:** LOCKULTURE-GDG2026.
-- **Phiên bản:** 2.1 — ngày 09/11/2026.
+- **Phiên bản:** 2.2 — ngày 09/11/2026.
 - **Tài liệu nghiệp vụ:** [PROJECT_SPECIFICATION.md](PROJECT_SPECIFICATION.md).
 - **Hợp đồng API:** [API_SPECIFICATION.md](API_SPECIFICATION.md).
 - **Đặc tả Giao diện UI:** [UI_SPECIFICATION.md](UI_SPECIFICATION.md).
@@ -11,14 +11,14 @@
 
 ## 1. PHÂN CHIA THÀNH PHẦN HỆ THỐNG (HYBRID ARCHITECTURE)
 
-Hệ thống Lockulture áp dụng mô hình kết hợp (Hybrid) giữa **FastAPI trên Google Cloud Run** (chuyên trách các tác vụ nặng về AI Multi-Agent) và **Firebase** (chuyên trách dữ liệu thời gian thực và lưu trữ hình ảnh).
+Hệ thống Lockulture áp dụng mô hình kết hợp (Hybrid) giữa **FastAPI trên Google Cloud Run** (chuyên trách các tác vụ nặng về AI Multi-Agent) và **Firebase** (chuyên trách dữ liệu thời gian thực và lưu trữ hình ảnh). Nền tảng tổ chức theo kiến trúc mở hỗ trợ các di tích trên toàn quốc, trong đó Đà Nẵng là bộ dữ liệu hoàn thiện cao nhất để demo trong kỳ thi Hackathon.
 
 | Thành phần | Nền tảng / Công nghệ | Vai trò & Trách nhiệm |
 | :--- | :--- | :--- |
-| **Mobile Client** (`mobile/`) | Flutter / Dart | • Giao diện Album Pokedex Đà Nẵng.<br>• Live Camera 1:1, kiểm soát anti-spoofing.<br>• Realtime Feed Stream từ Firebase Firestore.<br>• Bảng điều khiển Mock Location Đà Nẵng. |
+| **Mobile Client** (`mobile/`) | Flutter / Dart | • Giao diện Album Pokedex Lịch Sử Việt Nam (với dữ liệu Đà Nẵng).<br>• Live Camera 1:1, kiểm soát anti-spoofing.<br>• Realtime Feed Stream từ Firebase Firestore.<br>• Bảng điều khiển Mock Location Đà Nẵng. |
 | **BaaS Realtime** | Firebase Firestore & Cloud Storage | • Lưu trữ metadata người dùng, nhóm bạn (Locket Circles).<br>• Lắng nghe stream bài đăng thời gian thực (`onSnapshot()`).<br>• Lưu trữ ảnh chụp chứng tích di tích với CDN tốc độ cao. |
 | **AI Gateway & Orchestrator** (`backend/`) | Python 3.11 + FastAPI on Google Cloud Run | • Điều phối 4 AI Agents cốt lõi.<br>• Tích hợp Function Calling Google Places API.<br>• Gọi Gemini 2.5 Flash Vision & Text với Pydantic schema.<br>• Xử lý kiểm định ảnh 3 lớp (Anti-spoofing). |
-| **Hệ thống Multi-Agent** | Google Gemini API (Gemini 2.5 Flash) | • **Agent 1:** Quét Places Đà Nẵng, sáng tác mật thư Cầu Rồng/Thành Điện Hải.<br>• **Agent 2:** Kiểm tra vân màn hình, nhận diện di tích, xuất Structured JSON.<br>• **Agent 3:** Sinh caption Gen Z, persona roleplay nhân vật lịch sử.<br>• **Agent 4:** Thích ứng nhiệm vụ địa lý & Co-op Quest. |
+| **Hệ thống Multi-Agent** | Google Gemini API (Gemini 2.5 Flash) | • **Agent 1:** Quét Places, sáng tác mật thư lịch sử (ưu tiên Cầu Rồng/Thành Điện Hải Đà Nẵng).<br>• **Agent 2:** Kiểm tra vân màn hình, nhận diện di tích, xuất Structured JSON.<br>• **Agent 3:** Sinh caption Gen Z, persona roleplay nhân vật lịch sử.<br>• **Agent 4:** Thích ứng nhiệm vụ địa lý & Co-op Quest đa thành phố. |
 
 ---
 
@@ -27,10 +27,10 @@ Hệ thống Lockulture áp dụng mô hình kết hợp (Hybrid) giữa **FastA
 ```mermaid
 flowchart TD
     subgraph Client["Flutter Mobile App"]
-        UI_Album["Album Pokedex Đà Nẵng"]
+        UI_Album["Album Pokedex Lịch Sử Việt Nam"]
         UI_Camera["Smart Camera 1:1"]
         UI_Feed["Locket Friends Feed"]
-        Mock_Ctrl["Mock Location Controller (Đà Nẵng)"]
+        Mock_Ctrl["Mock Location Controller (Đà Nẵng Showcase)"]
     end
 
     subgraph Firebase["Firebase Platform"]
