@@ -1,10 +1,10 @@
 class MockLocationService {
   static bool isMockEnabled = true;
 
-  // Tọa độ Bưu điện Trung tâm Sài Gòn (Default mock)
-  static double currentLat = 10.779785;
-  static double currentLng = 106.699018;
-  static String currentSiteName = "Bưu điện Trung tâm TP.HCM";
+  // Tọa độ Cầu Rồng Đà Nẵng (Default mock demo)
+  static double currentLat = 16.0611;
+  static double currentLng = 108.2274;
+  static String currentSiteName = "Cầu Rồng Đà Nẵng";
 
   static void setMockLocation(double lat, double lng, String name) {
     currentLat = lat;
