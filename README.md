@@ -1,5 +1,7 @@
 # Lockulture (Time Traveler’s Locket)
 
+> **Trạng thái 10/11/2026:** UI Flutter có demo tương tác và luồng **Săn tìm → Camera thật + Gemini**. Agent xác thực ảnh đã gọi Google Gen AI SDK; cần `GEMINI_API_KEY` ở backend. GPS/geofence chưa tích hợp. Agent mật thư/kể chuyện, tiến độ nhóm và Feed vẫn dùng dữ liệu cục bộ/mẫu; chưa có Firebase realtime. Hướng dẫn camera và URL API theo thiết bị: [mobile/README.md](mobile/README.md).
+
 Ứng dụng di động kết hợp cơ chế chia sẻ ảnh tức thời kiểu **Locket** với yếu tố trò chơi hóa **Album Pokedex Lịch Sử & Văn Hóa** và hệ thống **Đa tác tử (Multi-Agent System)** trên nền tảng **Google Gemini API** & **Google Cloud Run**.
 
 - **Cuộc thi:** Mini Hackathon GDG 2026 – DevFest *"Learn Beyond Limits"*.

@@ -23,7 +23,7 @@ class ClueResponse(BaseModel):
 # -------------------------------------------------------------
 class VerificationResult(BaseModel):
     is_valid: bool = Field(description="Liệu ảnh có hợp lệ và khớp với thời kỳ không")
-    confidence_score: float = Field(description="Độ tin cậy từ 0.0 đến 1.0")
+    confidence_score: float = Field(ge=0, le=1, description="Độ tin cậy từ 0.0 đến 1.0")
     detected_landmark: str = Field(description="Tên công trình hoặc đồ vật nhận diện được")
     matched_era: Optional[str] = Field(None, description="Mã thời kỳ khớp")
     is_screen_spoof: bool = Field(description="True nếu là ảnh chụp lại màn hình máy tính/điện thoại")

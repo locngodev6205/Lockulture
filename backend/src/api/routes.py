@@ -79,16 +79,20 @@ async def generate_clue(req: ClueRequest):
 @router.post("/verification/verify-photo", response_model=VerificationResult)
 async def verify_photo(
     photo: UploadFile = File(...),
-    latitude: float = Form(...),
-    longitude: float = Form(...),
-    target_era_id: str = Form(...)
+    target_era_id: str = Form(...),
+    target_landmark: str | None = Form(None),
+    latitude: float | None = Form(None, ge=-90, le=90),
+    longitude: float | None = Form(None, ge=-180, le=180),
 ):
-    contents = await photo.read()
+    # Bound application memory; the reverse proxy should also cap request bodies.
+    contents = await photo.read(8 * 1024 * 1024 + 1)
+    await photo.close()
     return await verification_agent.verify_photo(
         image_bytes=contents,
         latitude=latitude,
         longitude=longitude,
-        target_era_id=target_era_id
+        target_era_id=target_era_id,
+        target_landmark=target_landmark,
     )
 
 # ------------------------------------------------------------------

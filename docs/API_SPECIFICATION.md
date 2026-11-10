@@ -1,4 +1,8 @@
 # HỢP ĐỒNG GIAO TIẾP API (API SPECIFICATION)
+
+> Cập nhật triển khai 10/11/2026 — `POST /verification/verify-photo` gọi Gemini thật, không còn trả thành công cố định. Multipart gồm `photo`, `target_era_id` và `target_landmark` (tên chính xác theo danh mục Đà Nẵng trong `backend/src/core/landmarks.py`). Latitude/longitude là tùy chọn, chưa dùng để geofence. Caller cũ chỉ gửi thời kỳ sẽ được chọn địa danh đầu tiên của thời kỳ đó. Ảnh tối đa 8 MB, 20 megapixel, định dạng JPEG/PNG/WebP; backend chuẩn hóa về JPEG tối đa 1080 px. Response theo `VerificationResult`, chưa có `badge_unlocked`. Chỉ cấp `xp_reward=150` khi khớp mục tiêu/thời kỳ, không phát hiện màn hình và điểm tin cậy ≥0.8; các kết quả bị từ chối có XP 0. Đây là đánh giá hình ảnh AI, chưa phải bằng chứng có mặt tại địa danh.
+>
+> Lỗi: 400 ảnh rỗng/hỏng; 413 quá dung lượng/kích thước; 415 định dạng không hỗ trợ; 422 địa danh/thời kỳ không hợp lệ; 429 quota Gemini; 503 chưa cấu hình key; 504 hết thời gian giám định; 502 lỗi dịch vụ hoặc response AI không hợp lệ. Khi lỗi dịch vụ không trả `is_valid=true`. Các mục draft/publish bên dưới vẫn là thiết kế, chưa triển khai.
 ### DỰ ÁN LOCKULTURE – ĐỊA BÀN ĐÀ NẴNG
 
 - **Mã tài liệu:** API-SPEC-LOCKULTURE-DANANG-2026.
