@@ -1,0 +1,17 @@
+node_modules/
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+/android/
+/ios/
+*.jks
+*.keystore
+*.p8
+*.p12
+*.mobileprovision
+npm-debug.*

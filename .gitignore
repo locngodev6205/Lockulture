@@ -15,17 +15,17 @@ venv/
 uploads/
 *.sqlite3
 
-# Flutter & Mobile
-mobile/.dart_tool/
-mobile/.flutter-plugins
-mobile/.flutter-plugins-dependencies
-mobile/.packages
-mobile/build/
-mobile/android/.gradle
-mobile/android/local.properties
-mobile/ios/.symlinks/
-mobile/ios/Pods/
-mobile/ios/Podfile.lock
+# Legacy Flutter (reference only)
+legacy/flutter/.dart_tool/
+legacy/flutter/.flutter-plugins
+legacy/flutter/.flutter-plugins-dependencies
+legacy/flutter/.packages
+legacy/flutter/build/
+legacy/flutter/android/.gradle
+legacy/flutter/android/local.properties
+legacy/flutter/ios/.symlinks/
+legacy/flutter/ios/Pods/
+legacy/flutter/ios/Podfile.lock
 *.ipr
 *.iws
 *.iml
@@ -35,3 +35,13 @@ mobile/ios/Podfile.lock
 .idea/
 .vscode/
 Thumbs.db
+
+# React Native / Expo
+node_modules/
+mobile/.expo/
+mobile/dist/
+mobile/web-build/
+mobile/android/
+mobile/ios/
+mobile/expo-env.d.ts
+*.tsbuildinfo

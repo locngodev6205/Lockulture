@@ -1,0 +1,86 @@
+import type { Era, FeedPost } from '@/domain/models';
+
+export const eraFixtures: Era[] = [
+  {
+    id: 'ERA_ANCIENT',
+    name: 'Thời dựng nước',
+    period: 'Văn Lang – Âu Lạc',
+    status: 'not_started',
+    fragmentCount: 0,
+    fragmentGoal: 3,
+  },
+  {
+    id: 'ERA_BAC_THUOC',
+    name: 'Thời Bắc thuộc',
+    period: 'Dấu ấn một thời kỳ',
+    status: 'not_started',
+    fragmentCount: 0,
+    fragmentGoal: 3,
+  },
+  {
+    id: 'ERA_NGO_DINH_TIEN_LE',
+    name: 'Ngô – Đinh – Tiền Lê',
+    period: 'Buổi đầu tự chủ',
+    status: 'not_started',
+    fragmentCount: 0,
+    fragmentGoal: 3,
+  },
+  {
+    id: 'ERA_LY_TRAN',
+    name: 'Lý – Trần',
+    period: 'Thế kỷ XI – XIV',
+    status: 'not_started',
+    fragmentCount: 0,
+    fragmentGoal: 3,
+  },
+  {
+    id: 'ERA_LE_SO',
+    name: 'Lê sơ',
+    period: 'Những dấu ấn Đại Việt',
+    status: 'not_started',
+    fragmentCount: 0,
+    fragmentGoal: 3,
+  },
+  {
+    id: 'ERA_MAC_LE_TRUNG_HUNG',
+    name: 'Mạc – Lê trung hưng',
+    period: 'Những lớp ký ức',
+    status: 'not_started',
+    fragmentCount: 0,
+    fragmentGoal: 3,
+  },
+  {
+    id: 'ERA_TAY_SON',
+    name: 'Tây Sơn',
+    period: 'Dấu ấn Tây Sơn',
+    status: 'not_started',
+    fragmentCount: 0,
+    fragmentGoal: 3,
+  },
+  {
+    id: 'ERA_NGUYEN',
+    name: 'Triều Nguyễn',
+    period: 'Thế kỷ XIX – XX',
+    status: 'not_started',
+    fragmentCount: 0,
+    fragmentGoal: 3,
+  },
+  {
+    id: 'ERA_MODERN',
+    name: 'Thời cận – hiện đại',
+    period: 'Dấu ấn chuyển mình',
+    status: 'not_started',
+    fragmentCount: 0,
+    fragmentGoal: 3,
+  },
+  {
+    id: 'ERA_CONTEMPORARY',
+    name: 'Đương đại',
+    period: 'Việt Nam hôm nay',
+    status: 'not_started',
+    fragmentCount: 0,
+    fragmentGoal: 3,
+  },
+];
+// Empty initially: setup must not pretend that a discovery/post has already happened.
+export const postFixtures: FeedPost[] = [];

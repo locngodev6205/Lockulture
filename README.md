@@ -1,110 +1,53 @@
-# Lockulture (Time Traveler’s Locket)
+# Lockulture
 
-Ứng dụng di động kết hợp cơ chế chia sẻ ảnh tức thời kiểu **Locket** với yếu tố trò chơi hóa **Album Pokedex Lịch Sử & Văn Hóa** và hệ thống **Đa tác tử (Multi-Agent System)** trên nền tảng **Google Gemini API** & **Google Cloud Run**.
+Ứng dụng khám phá lịch sử và văn hóa qua hai chế độ: **chụp tự do** và **nhiệm vụ địa điểm**. Người chơi thu thập mảnh ghép trên timeline, nhận XP và chủ động chia sẻ với bạn bè/nhóm.
 
-- **Cuộc thi:** Mini Hackathon GDG 2026 – DevFest *"Learn Beyond Limits"*.
-- **Đặc tả nghiệp vụ:** [docs/PROJECT_SPECIFICATION.md](docs/PROJECT_SPECIFICATION.md).
-- **Kiến trúc hệ thống:** [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
-- **Hợp đồng API:** [docs/API_SPECIFICATION.md](docs/API_SPECIFICATION.md).
+Dự án của nhóm **3 thành viên**, tham gia Mini Hackathon GDG miền Trung 2026, chủ đề DevFest “Learn Beyond Limits”.
 
----
+## Tài liệu hiện hành
 
-## 🚀 Khởi chạy Nhanh Hệ thống
+Bắt đầu tại [docs/README.md](docs/README.md). Bộ tài liệu đã được tổ chức lại ngày 11/11/2026, phân biệt quyết định sản phẩm, hiện trạng code, luồng UI và đề xuất tích hợp.
 
-### 1. Khởi chạy Backend bằng Docker Compose (Khuyên dùng)
+- [Luật sản phẩm đã chốt](docs/PROJECT_SPECIFICATION.md)
+- [Hiện trạng frontend/backend](docs/CURRENT_STATE.md)
+- [Kế hoạch tích hợp](docs/integration/PLAN.md)
+- [Hướng dẫn chạy mobile](mobile/README.md)
+
+Frontend React Native/Expo đã có Missions, Capture, Friends/Groups, chia sẻ chọn người nhận, cảm xúc/bình luận và leaderboard bằng mock local. Một số trang auth/chi tiết vẫn scaffold. Backend FastAPI còn routes cũ và agent trả mẫu; chưa Maps/Gemini thật, auth hay đồng bộ nhiều tài khoản. Nhập API key không tự hoàn thiện tích hợp.
+
+## Chạy scaffold hiện tại
+
+Từ thư mục gốc repo:
 
 ```bash
-# 1. Tạo file .env từ file mẫu và điền GEMINI_API_KEY
 cp .env.example .env
-
-# 2. Khởi chạy container backend
 docker compose up --build -d
-
-# 3. Kiểm tra nhật ký hoạt động
 docker compose logs -f backend
 ```
 
-- **API Documentation (Swagger UI):** http://localhost:8080/docs
-- **Healthcheck Endpoint:** http://localhost:8080/health
-
----
-
-### 2. Khởi chạy Ứng dụng Mobile (Flutter)
+`.env` là cấu hình cục bộ, không commit khóa API. Backend local: [Swagger](http://localhost:8080/docs), [health](http://localhost:8080/health). Swagger mô tả route đang chạy, chưa phải API mục tiêu trong tài liệu.
 
 ```bash
 cd mobile
-
-# 1. Cài đặt các gói phụ thuộc
-flutter pub get
-
-# 2. Khởi chạy trên máy ảo hoặc thiết bị thật (Android/iOS)
-flutter run
+nvm use
+npm ci
+npm run start:go
 ```
 
-> 💡 **Mẹo Demo Sân Khấu (Mock Location Switch):**  
-> Trong ứng dụng mobile, người dùng có thể mở menu **"Chế độ Giám Khảo (Judge Mode)"** để chọn các tọa độ giả lập (Dinh Độc Lập, Bưu điện Sài Gòn, Văn Miếu Quốc Tử Giám...) giúp kiểm thử toàn bộ luồng gợi ý và xác thực di tích của AI mà không cần phải ra thực địa.
+Cần Node 24 LTS và Expo Go tương thích SDK 58 hoặc development build; web preview dùng `npm run web`. Bản frontend có camera live, Missions và đánh giá/thưởng Capture bằng mock; chưa nối AI thật hoặc hoàn thiện toàn bộ nghiệp vụ. Camera/GPS cần kiểm tra trên thiết bị thật; mock không chứng minh agent hoạt động thật.
 
----
-
-## 🏛️ Cấu trúc Thư mục Dự án
+## Cấu trúc hiện có
 
 ```text
-Hackathon/
-├── docs/                             # Tài liệu kỹ thuật chuẩn mực
-│   ├── PROJECT_SPECIFICATION.md      # Đặc tả yêu cầu & nghiệp vụ chi tiết
-│   ├── ARCHITECTURE.md               # Kiến trúc hệ thống & Multi-Agent flow
-│   └── API_SPECIFICATION.md          # Hợp đồng REST API giữa Mobile & Backend
-│
-├── mobile/                           # Ứng dụng di động (Flutter Client)
-│   ├── assets/                       # Biểu tượng, hình ảnh & huy hiệu thời kỳ
-│   ├── lib/
-│   │   ├── core/                     # Constants, Theme, Network (Dio), Mock Services
-│   │   ├── features/
-│   │   │   ├── album/                # Album Pokedex Dòng Thời Gian phi tuyến tính
-│   │   │   ├── clues/                # Hộp thoại Mật thư câu đố dẫn đường (Agent 1)
-│   │   │   ├── camera/               # Live Camera 1:1, Quét Anti-spoofing (Agent 2)
-│   │   │   ├── feed/                 # Bảng tin Locket, Caption Gen Z & Persona (Agent 3)
-│   │   │   └── mock_demo/            # Bộ điều khiển Mock Location phục vụ demo
-│   │   └── main.dart                 # Điểm khởi động ứng dụng
-│   └── pubspec.yaml                  # Khai báo thư viện (camera, riverpod, dio...)
-│
-├── backend/                          # Backend Gateway & Multi-Agent (FastAPI)
-│   ├── src/
-│   │   ├── agents/                   # 4 AI Agents chuyên biệt
-│   │   │   ├── clue_agent.py         # Agent 1: Places API + Gemini Clues
-│   │   │   ├── verification_agent.py # Agent 2: Gemini Vision + Anti-spoof + JSON
-│   │   │   ├── storyteller_agent.py  # Agent 3: Caption Gen Z + Persona Roleplay
-│   │   │   └── gamification_agent.py # Agent 4: Adaptive quest / Co-op
-│   │   ├── api/                      # Routes & Endpoints API
-│   │   ├── core/                     # Cấu hình Gemini Client & App Config
-│   │   ├── models/                   # Pydantic Schemas & Data models
-│   │   └── main.py                   # Điểm khởi động FastAPI
-│   ├── Dockerfile                    # Đóng gói container chuẩn Google Cloud Run
-│   └── requirements.txt              # Danh sách thư viện Python
-│
-├── compose.yaml                      # Docker Compose chạy môi trường phát triển
-├── .env.example                      # Mẫu biến môi trường
-└── .gitignore                        # Cấu hình loại trừ file nhạy cảm và cache
+Lockulture/
+├── docs/                 # Đặc tả, luồng UI, kiến trúc và API
+├── mobile/src/           # React Native/Expo, routes, features, services và mock
+├── legacy/flutter/       # Scaffold Flutter cũ để tham khảo
+├── backend/src/          # FastAPI, schemas và bốn vai trò agent mẫu
+├── backend/Dockerfile
+├── backend/requirements.txt
+├── compose.yaml
+└── .env.example
 ```
 
----
-
-## 🤖 4 AI Agents Cốt Lõi Trên Google Cloud Run
-
-1. **Agent 1: "Quản Trò Dẫn Đường" (Dynamic Clue & Location Agent):** Quét Google Maps Places API theo bán kính GPS và dùng Gemini tạo mật thư dẫn đường phong cách cổ phong.
-2. **Agent 2: "Giám Định Viên Lịch Sử" (Multimodal Verification Agent):** Kiểm tra chống ảnh chụp lại màn hình (Anti-spoofing), nhận diện công trình bằng Gemini Multimodal Vision và xuất kết quả dạng **Structured JSON**.
-3. **Agent 3: "Người Kể Chuyện Locket" (Social Storytelling Agent):** Tự động tạo caption Gen Z dí dỏm kèm sự thật lịch sử thú vị (Fun Fact), đóng vai nhân vật lịch sử bình luận tương tác đầu tiên dưới bài đăng.
-4. **Agent 4: "Kiến Trúc Sư Nhiệm Vụ" (Adaptive Gamification Agent):** Thích ứng đổi nhiệm vụ sang hiện vật bảo tàng hoặc kích hoạt nhiệm vụ Co-op nếu khu vực người dùng ở xa di tích cổ.
-
----
-
-## 📋 Triển khai lên Google Cloud Run
-
-```bash
-gcloud run deploy chronolocket-api \
-    --source ./backend \
-    --platform managed \
-    --region asia-southeast1 \
-    --allow-unauthenticated \
-    --set-env-vars GEMINI_API_KEY="AIzaSy...",GOOGLE_MAPS_API_KEY="..."
-```
+Đích triển khai backend vẫn là Docker trên **Google Cloud Run**. Model, kho lưu dữ liệu/ảnh và cấu hình triển khai thật cần chốt khi tích hợp; chưa có URL production được xác nhận.
