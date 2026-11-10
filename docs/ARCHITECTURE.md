@@ -6,7 +6,7 @@ Cập nhật 11/11/2026 · [Chỉ mục](README.md).
 
 React Native/Expo Router → feature screens → một phần service mock, một phần Zustand trực tiếp → AsyncStorage/file local. TanStack Query và HTTP helper đã có nhưng chưa áp dụng đồng nhất. API adapter chưa triển khai; đổi env không chuyển tất cả store thành backend.
 
-FastAPI có routes và schemas cũ, bốn module agent trả mẫu; chưa có DB nghiệp vụ, xác thực hoặc tool Maps/Gemini thật. Xem [API hiện hành](api/CURRENT.md) và [inventory code](CURRENT_STATE.md).
+FastAPI đã nhận verification gọi Gemini thật từ main; các module khác còn mẫu. Chưa có DB nghiệp vụ, auth hay Maps tool. Policy verification hiện chưa khớp luồng React Native; xem [ghi chú merge](integration/UPSTREAM_MERGE.md). Xem [API hiện hành](api/CURRENT.md) và [inventory code](CURRENT_STATE.md).
 
 ## Mục tiêu tích hợp (chưa triển khai)
 

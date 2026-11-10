@@ -20,6 +20,10 @@ Cập nhật 11/11/2026. Điểm bắt đầu cho thành viên nhóm và AI agen
 - Mỗi quy tắc có một nơi chính. Khi thay đổi, sửa nội dung ở nơi đó và link từ các file khác; không nối thêm phụ lục mâu thuẫn với phần đầu.
 - Các file mô tả hệ thống sớm bên ngoài docs hoặc legacy/flutter chỉ là tư liệu lịch sử, không dùng để khôi phục luồng cũ.
 
+## Cập nhật sau merge main
+
+[Ghi chú merge](integration/UPSTREAM_MERGE.md): backend mới có Gemini verification, bản Flutter mới giữ ở legacy; policy/API vẫn cần đồng bộ với React Native.
+
 ## Những điểm chưa chốt
 
 Chọn provider auth/DB/kho ảnh; hạn mức/cooldown AI; luật thưởng free cho cùng đối tượng ở lần nộp mới; quyền xem bài cũ sau khi rời nhóm/xóa bạn; cơ chế mời nhóm thật; chính sách moderation và lưu/xóa ảnh. Xem đề xuất trong integration trước khi triển khai.

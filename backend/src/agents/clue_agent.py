@@ -8,19 +8,33 @@ from src.core.config import settings
 from src.models.schemas import ClueResponse
 
 MOCK_LANDMARKS = {
-    "ERA_FRENCH_COLONIAL": {
-        "name": "Bưu điện Trung tâm Sài Gòn",
-        "type": "Công trình kiến trúc Gothic Pháp cuối thế kỷ 19",
-        "distance": 150,
-        "clue_l1": "Hỡi lữ khách! Cách ngươi chừng 150 bước chân về hướng đông, nơi chiếc đồng hồ khổng lồ ngắm nhìn triệu bức thư xuyên ba thế kỷ. Hãy đến đó!",
-        "clue_l2": "Hãy bước ra đường Công xã Paris. Tìm tòa nhà màu vàng cổ kính có mái vòm sắt do kiến trúc sư Gustave Eiffel thiết kế!"
-    },
     "ERA_MODERN": {
-        "name": "Dinh Độc Lập",
-        "type": "Di tích lịch sử Dinh Thống Nhất",
-        "distance": 500,
-        "clue_l1": "Nơi bãi cỏ xanh ngát phía tây, có cổng sắt ghi dấu ngày thống nhất non sông năm ấy...",
-        "clue_l2": "Hãy tiến về đường Nam Kỳ Khởi Nghĩa. Tòa nhà gắn liền với xe tăng 390 lịch sử trưa 30/4/1975."
+        "name": "Cầu Rồng Đà Nẵng",
+        "type": "Cây cầu thép biểu tượng hiện đại",
+        "distance": 200,
+        "clue_l1": "Từ nơi ngươi đứng, hãy hướng mắt về phía dòng sông biếc. Có một con rồng vàng khổng lồ uốn lượn qua làn nước, ngậm vầng dương và hướng mặt ra biển Đông. Hãy đến đó!",
+        "clue_l2": "Hãy tiến về đường Nguyễn Văn Linh nối dài qua sông Hàn. Đó chính là Cầu Rồng – cây cầu nặng gần 9.000 tấn thép có khả năng phun lửa!"
+    },
+    "ERA_NGUYEN": {
+        "name": "Thành Điện Hải (Phòng tuyến 1858)",
+        "type": "Pháo đài kiên cố triều Nguyễn",
+        "distance": 350,
+        "clue_l1": "Hãy tìm về nơi thành lũy đá son rêu phong, nơi danh tướng áo vải từng chặn đứng những bước chân ngoại bang đầu tiên năm 1858...",
+        "clue_l2": "Hãy tiến về đường Trần Phú, gần bảo tàng thành phố. Tìm pháo đài hình bông sen của tướng Nguyễn Tri Phương!"
+    },
+    "ERA_CHAMPA": {
+        "name": "Bảo tàng Điêu khắc Chăm Đà Nẵng",
+        "type": "Bảo tàng điêu khắc sa thạch cổ đại",
+        "distance": 400,
+        "clue_l1": "Nơi ngã ba sông giao hòa, có ngôi nhà mái nhọn lưu giữ hàng trăm tượng thần Chăm Pa ngàn năm trầm mặc trong sa thạch...",
+        "clue_l2": "Đó là Bảo tàng Điêu khắc Chăm nằm cạnh Cầu Rồng, nơi lưu giữ tượng Thần Shiva và đài thờ Trà Kiệu nổi tiếng."
+    },
+    "ERA_FRENCH_COLONIAL": {
+        "name": "Nhà thờ Chính tòa Đà Nẵng (Nhà thờ Con Gà)",
+        "type": "Kiến trúc Gothic Pháp màu hồng",
+        "distance": 300,
+        "clue_l1": "Hãy bước theo tiếng chuông ngân qua hàng cây cổ thụ. Tìm ngôi thánh đường màu hồng có chú gà sừng sững trên đỉnh tháp chuông cao vút...",
+        "clue_l2": "Đó là Nhà thờ Con Gà trên đường Trần Phú, xây dựng từ năm 1923 theo phong cách Gothic Tây Âu."
     }
 }
 

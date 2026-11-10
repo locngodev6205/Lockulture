@@ -1,7 +1,10 @@
 class ApiConstants {
   // Thay đổi sang IP máy tính của bạn khi chạy máy ảo Android (ví dụ 10.0.2.2:8080)
   // hoặc URL của Google Cloud Run khi deploy
-  static const String baseUrl = 'http://10.0.2.2:8080/api/v1';
+  static const String baseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: 'http://localhost:8080/api/v1',
+  );
 
   static const String albumEras = '/album/eras';
   static const String cluesGenerate = '/clues/generate';

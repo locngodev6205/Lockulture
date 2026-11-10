@@ -17,45 +17,45 @@ router = APIRouter()
 @router.get("/album/eras", response_model=AlbumResponse)
 async def get_album_eras():
     return AlbumResponse(
-        group_id="grp_devfest_01",
-        completion_rate=0.5,
+        group_id="grp_danang_01",
+        completion_rate=0.4,
         eras=[
             HistoricalEraItem(
-                era_id="ERA_ANCIENT",
-                era_name="Thời Cổ Đại & Dựng Nước",
-                time_range="Trước thế kỷ X",
+                era_id="ERA_CHAMPA",
+                era_name="Thời Cổ Đại & Văn Hóa Chăm Pa",
+                time_range="Thế kỷ II - XV",
                 is_unlocked=True,
                 unlocked_by="Nam",
                 photo_url="https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?w=500",
-                landmark_name="Đền Hùng",
+                landmark_name="Bảo tàng Điêu khắc Chăm",
                 xp_earned=100
             ),
             HistoricalEraItem(
-                era_id="ERA_LY_TRAN",
-                era_name="Thời Lý - Trần (Hào Khí Đông A)",
-                time_range="Thế kỷ XI - XIV",
-                is_unlocked=False
-            ),
-            HistoricalEraItem(
                 era_id="ERA_NGUYEN",
-                era_name="Thời Triều Nguyễn",
+                era_name="Thời Triều Nguyễn & Phòng Tuyến Kháng Pháp",
                 time_range="Thế kỷ XIX",
                 is_unlocked=False
             ),
             HistoricalEraItem(
                 era_id="ERA_FRENCH_COLONIAL",
-                era_name="Thời Kỳ Cận Đại & Giao Thoa Văn Hóa",
-                time_range="Cuối XIX - Đầu XX",
+                era_name="Thời Kỳ Cận Đại & Nhượng Địa Tourane",
+                time_range="1888 - 1945",
+                is_unlocked=False
+            ),
+            HistoricalEraItem(
+                era_id="ERA_REVOLUTION",
+                era_name="Thời Kỳ Kháng Chiến & Cách Mạng",
+                time_range="1945 - 1975",
                 is_unlocked=False
             ),
             HistoricalEraItem(
                 era_id="ERA_MODERN",
-                era_name="Thời Kỳ Kháng Chiến & Độc Lập",
-                time_range="1945 - 1975",
+                era_name="Thời Kỳ Đổi Mới & Hiện Đại (Cầu Rồng)",
+                time_range="1997 - Nay",
                 is_unlocked=True,
                 unlocked_by="Linh",
                 photo_url="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=500",
-                landmark_name="Dinh Độc Lập",
+                landmark_name="Cầu Rồng Đà Nẵng",
                 xp_earned=150
             )
         ]
@@ -79,16 +79,20 @@ async def generate_clue(req: ClueRequest):
 @router.post("/verification/verify-photo", response_model=VerificationResult)
 async def verify_photo(
     photo: UploadFile = File(...),
-    latitude: float = Form(...),
-    longitude: float = Form(...),
-    target_era_id: str = Form(...)
+    target_era_id: str = Form(...),
+    target_landmark: str | None = Form(None),
+    latitude: float | None = Form(None, ge=-90, le=90),
+    longitude: float | None = Form(None, ge=-180, le=180),
 ):
-    contents = await photo.read()
+    # Bound application memory; the reverse proxy should also cap request bodies.
+    contents = await photo.read(8 * 1024 * 1024 + 1)
+    await photo.close()
     return await verification_agent.verify_photo(
         image_bytes=contents,
         latitude=latitude,
         longitude=longitude,
-        target_era_id=target_era_id
+        target_era_id=target_era_id,
+        target_landmark=target_landmark,
     )
 
 # ------------------------------------------------------------------
@@ -108,27 +112,43 @@ async def enrich_moment(req: MomentEnrichRequest):
 @router.get("/mock/landmarks")
 async def get_mock_landmarks():
     return {
+        "city": "Đà Nẵng",
         "mock_sites": [
             {
-                "site_id": "HCM_POST_OFFICE",
-                "site_name": "Bưu điện Trung tâm TP.HCM",
-                "latitude": 10.779785,
-                "longitude": 106.699018,
-                "era_id": "ERA_FRENCH_COLONIAL"
+                "site_id": "DN_DRAGON_BRIDGE",
+                "site_name": "Cầu Rồng Đà Nẵng",
+                "latitude": 16.0611,
+                "longitude": 108.2274,
+                "era_id": "ERA_MODERN",
+                "era_name": "Thời Kỳ Đổi Mới & Hiện Đại",
+                "persona_name": "Thần Rồng Vàng Sông Hàn"
             },
             {
-                "site_id": "HCM_INDEPENDENCE_PALACE",
-                "site_name": "Dinh Độc Lập",
-                "latitude": 10.776889,
-                "longitude": 106.695346,
-                "era_id": "ERA_MODERN"
+                "site_id": "DN_DIEN_HAI_CITADEL",
+                "site_name": "Thành Điện Hải (Phòng tuyến 1858)",
+                "latitude": 16.0754,
+                "longitude": 108.2235,
+                "era_id": "ERA_NGUYEN",
+                "era_name": "Thời Triều Nguyễn & Kháng Pháp",
+                "persona_name": "Danh tướng Nguyễn Tri Phương"
             },
             {
-                "site_id": "HN_TEMPLE_OF_LITERATURE",
-                "site_name": "Văn Miếu - Quốc Tử Giám",
-                "latitude": 21.028511,
-                "longitude": 105.835526,
-                "era_id": "ERA_LY_TRAN"
+                "site_id": "DN_CHAM_MUSEUM",
+                "site_name": "Bảo tàng Điêu khắc Chăm Đà Nẵng",
+                "latitude": 16.0607,
+                "longitude": 108.2236,
+                "era_id": "ERA_CHAMPA",
+                "era_name": "Thời Cổ Đại & Chăm Pa",
+                "persona_name": "Nữ thần Ánh sáng Chăm Pa"
+            },
+            {
+                "site_id": "DN_ROOSTER_CHURCH",
+                "site_name": "Nhà thờ Chính tòa Đà Nẵng (Nhà thờ Con Gà)",
+                "latitude": 16.0667,
+                "longitude": 108.2239,
+                "era_id": "ERA_FRENCH_COLONIAL",
+                "era_name": "Thời Cận Đại & Pháp Thuộc",
+                "persona_name": "Linh mục Louis Vallet (1923)"
             }
         ]
     }

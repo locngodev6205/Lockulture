@@ -16,7 +16,7 @@
 | HTTP | `services/api/client.ts`: bearer tùy chọn, JSON, timeout mặc định 15 giây | Chưa refresh token, runtime DTO validation hoặc upload pipeline |
 | Adapter | Interface exploration/feed/missions/capture | API adapter báo chưa tích hợp; không fallback mock âm thầm |
 | Cấu hình | `EXPO_PUBLIC_DATA_SOURCE`, `EXPO_PUBLIC_API_BASE_URL` | Chuyển env chưa thay được những màn hình đang gọi store trực tiếp |
-| Backend | FastAPI, Dockerfile, bốn module agent | Hiện chủ yếu trả fixture; chưa có hệ thống social/persistence thật |
+| Backend | FastAPI, Dockerfile, bốn module agent | Verification gọi Gemini; các luồng khác còn mẫu, chưa social/persistence thật |
 
 Thư mục tham chiếu: `mobile/src/app`, `features`, `domain`, `services`, `state`, `shared`; Flutter cũ lưu trong `legacy/flutter`.
 

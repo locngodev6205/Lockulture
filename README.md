@@ -13,7 +13,7 @@ Bắt đầu tại [docs/README.md](docs/README.md). Bộ tài liệu đã đư�
 - [Kế hoạch tích hợp](docs/integration/PLAN.md)
 - [Hướng dẫn chạy mobile](mobile/README.md)
 
-Frontend React Native/Expo đã có Missions, Capture, Friends/Groups, chia sẻ chọn người nhận, cảm xúc/bình luận và leaderboard bằng mock local. Một số trang auth/chi tiết vẫn scaffold. Backend FastAPI còn routes cũ và agent trả mẫu; chưa Maps/Gemini thật, auth hay đồng bộ nhiều tài khoản. Nhập API key không tự hoàn thiện tích hợp.
+Frontend React Native/Expo đã có Missions, Capture, Friends/Groups, chia sẻ chọn người nhận, cảm xúc/bình luận và leaderboard bằng mock local. Một số trang auth/chi tiết vẫn scaffold. Backend FastAPI đã có verification gọi Gemini từ main; các luồng khác còn mẫu, chưa Maps/auth/đồng bộ nhiều tài khoản. React Native chưa nối API này; xem docs/integration/UPSTREAM_MERGE.md.
 
 ## Chạy scaffold hiện tại
 
